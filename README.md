@@ -43,16 +43,16 @@ sudo cp earth-track /usr/local/bin/
 
 ## Usage
 
-Launch Google Earth Pro at a specific location:
+Launch Google Earth Pro at a specific location, e.g Victoria Falls:
 
 ```bash
-earth-track -26.2023,28.0436
+earth-track -17.9243,25.8572
 ```
 
 Example:
 
 ```bash
-earth-track 51.5007,-0.1246
+earth-track -17.9243,25.8572
 ```
 
 The script will:
