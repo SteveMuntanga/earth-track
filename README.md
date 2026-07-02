@@ -1,4 +1,4 @@
-# earth-track# earth-track
+# earth-track
 
 **earth-track** is a lightweight Linux command-line utility that opens geographic coordinates directly in Google Earth Pro.
 
