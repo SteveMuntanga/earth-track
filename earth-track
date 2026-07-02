@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if [[ $# -ne 1 ]]; then
+    echo "Usage: earth-track <latitude,longitude>"
+    echo "Example: earth-track -26.2023,28.0436"
+    exit 1
+fi
+
+if ! command -v google-earth-pro >/dev/null 2>&1; then
+    echo "Error: Google Earth Pro is not installed or is not in your PATH."
+    exit 1
+fi
+
+IFS=',' read -r LAT LON <<< "$1"
+
+CACHE_DIR="$HOME/.cache/google-earth"
+KML="$CACHE_DIR/location.kml"
+
+mkdir -p "$CACHE_DIR"
+
+cat > "$KML" <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Placemark>
+    <name>Target</name>
+    <Point>
+      <coordinates>${LON},${LAT},0</coordinates>
+    </Point>
+  </Placemark>
+</kml>
+EOF
+
+google-earth-pro "$KML"
